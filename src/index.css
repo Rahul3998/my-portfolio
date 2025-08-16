@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Dark theme with purple neon gradients and glassmorphism 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark background system */
+    --background: 240 10% 3.9%;
+    --background-secondary: 240 9% 8%;
+    --foreground: 0 0% 98%;
+
+    /* Glass morphism cards */
+    --card: 240 10% 8% / 0.6;
+    --card-foreground: 0 0% 95%;
+    --card-border: 270 100% 80% / 0.2;
+
+    /* Popover components */
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Purple neon primary system */
+    --primary: 270 100% 65%;
+    --primary-glow: 270 100% 80%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Subtle secondary tones */
+    --secondary: 240 15% 15%;
+    --secondary-foreground: 0 0% 90%;
+
+    /* Muted interface elements */
+    --muted: 240 10% 12%;
+    --muted-foreground: 240 5% 65%;
+
+    /* Accent neon highlights */
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Error states */
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders and inputs */
+    --border: 240 15% 20% / 0.5;
+    --input: 240 15% 15%;
+    --ring: 270 100% 65%;
+
+    /* Design tokens */
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--accent)));
+    --gradient-background: radial-gradient(circle at 50% 50%, hsl(240 15% 8%) 0%, hsl(240 10% 3.9%) 100%);
+
+    /* Shadows and glows */
+    --glow-primary: 0 0 30px hsl(var(--primary) / 0.5);
+    --glow-accent: 0 0 40px hsl(var(--accent) / 0.3);
+    --shadow-glass: 0 8px 32px hsl(240 10% 3.9% / 0.4);
+
+    /* Typography */
+    --font-heading: 'Montserrat', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  }
+}
+
+/* Custom utility classes for portfolio effects */
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-sm border border-card-border;
+    background: hsl(var(--card));
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-glow {
+    background: var(--gradient-glow);
+  }
+
+  .text-gradient {
+    background: var(--gradient-glow);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+}
+
+/* Keyframes for animations */
+@layer base {
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+    }
+    to {
+      box-shadow: 0 0 30px hsl(var(--primary) / 0.8), 0 0 60px hsl(var(--accent) / 0.3);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(2deg);
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  .font-handwriting {
+    font-family: 'Courier New', monospace;
+    font-style: italic;
+    font-weight: 500;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
