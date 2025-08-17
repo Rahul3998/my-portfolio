@@ -21,5 +21,5 @@ export default defineConfig(({ mode }) => ({
   // 👇 IMPORTANT: Add this for GitHub Pages
   // If your repo is rahul3998/portfolio, set base: "/portfolio/"
   // If your repo is rahul3998/rahul3998.github.io, use base: "/"
-  base: "/my-portfolio/",
+  
 }));
